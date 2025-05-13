@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">IL - Shopping Site</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
+          <ul class="dropdown-menu">
+            {% for i in category %}
+            <li><a class="dropdown-item" href="/categoryviseproduct/{{ i.id }}">{{ i.catname }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+      <div class="d-flex align-items-center">
+        {% if request.session.log_name %}
+        {% if request.session.log_role == "user" %}
+        <a class="btn btn-outline-light me-2" href="/showcart"><i class="bi bi-cart"></i> Cart</a>
+        <a class="btn btn-outline-light me-2" href="/yourorders">Your Orders</a>
+        {% endif %}
+        {% if request.session.log_role == "seller" %}
+        <a class="btn btn-outline-light me-2" href="/addproduct">Add Product</a>
+        <a class="btn btn-outline-light me-2" href="/manageproduct">Manage Product</a>
+        {% endif %}
+        <a class="btn btn-outline-light me-2" href="/logout">Logout</a>
+        <a class="btn btn-outline-light me-2" href="/changepass">Change Password</a>
+        <div class="user-info ms-3">
+          <img src="https://via.placeholder.com/32" alt="User">
+          <span class="text-light">{{ request.session.log_name }}</span>
+        </div>
+        {% else %}
+                <a class="btn btn-outline-light me-2" href="/login">Login</a>
+        <a class="btn btn-outline-light me-2" href="/register">Sign Up</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>

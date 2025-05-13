@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Display Page</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0d1b2a; /* Dark blue */
+      color: #f0f0f0; /* Light gray */
+    }
+
+    .navbar {
+      background-color: #1b263b; /* Slightly lighter dark blue */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar a, .navbar .navbar-brand {
+      color: #f0f0f0; /* Light gray */
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      color: #38bdf8; /* Cyan */
+    }
+
+    .card {
+      background-color: #1b263b; /* Card background matching theme */
+      color: #f0f0f0; /* Card text color */
+      border: none;
+      border-radius: 8px;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .card img {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 1rem;
+    }
+
+    .product-name {
+      font-weight: bold;
+    }
+
+    .product-price {
+      text-align: right;
+      font-size: 1.1rem;
+      color: #38bdf8; /* Highlighted price color */
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .user-info img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+	.navbar .dropdown-menu {
+  background-color: #1b263b; /* Dark background for dropdown */
+}
+
+.navbar .dropdown-item {
+  color: #f0f0f0; /* Light text color for dropdown items */
+}
+
+.navbar .dropdown-item:hover {
+  background-color: #38bdf8; /* Highlighted background color on hover */
+  color: #0d1b2a; /* Dark text color on hover */
+}
+
+	
+	
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+{% include 'nav.html' %}
+{% if messages %}
+{% for i in messages %}
+<script>alert("{{ i }}");</script>
+{% endfor %}
+{% endif %}
+
+  <!-- Main Section -->
+  <div class="container my-5">
+    <h2 class="text-center mb-4">Products</h2>
+    <div class="products-grid">
+      <!-- Product Card 1 -->
+      {% for i in products %}
+      <div class="card">
+       <a href="/singleproduct/{{ i.id }}"> <img src="media/{{ i.pimage }}" class="card-img-top" alt="Product 1"></a>
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <span class="product-name">{{ i.name }}</span>
+            <span class="product-price">Rs. {{ i.price }}</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <!-- Product Card 2 -->
+<!--      <div class="card">-->
+<!--        <img src="https://via.placeholder.com/250x200" class="card-img-top" alt="Product 2">-->
+<!--        <div class="card-body">-->
+<!--          <div class="d-flex justify-content-between">-->
+<!--            <span class="product-name">Headphones</span>-->
+<!--            <span class="product-price">$100</span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; Product Card 3 &ndash;&gt;-->
+<!--      <div class="card">-->
+<!--        <img src="https://via.placeholder.com/250x200" class="card-img-top" alt="Product 3">-->
+<!--        <div class="card-body">-->
+<!--          <div class="d-flex justify-content-between">-->
+<!--            <span class="product-name">Smartwatch</span>-->
+<!--            <span class="product-price">$200</span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; Product Card 4 &ndash;&gt;-->
+<!--      <div class="card">-->
+<!--        <img src="https://via.placeholder.com/250x200" class="card-img-top" alt="Product 4">-->
+<!--        <div class="card-body">-->
+<!--          <div class="d-flex justify-content-between">-->
+<!--            <span class="product-name">Laptop</span>-->
+<!--            <span class="product-price">$1200</span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; Product Card 5 &ndash;&gt;-->
+<!--      <div class="card">-->
+<!--        <img src="https://via.placeholder.com/250x200" class="card-img-top" alt="Product 5">-->
+<!--        <div class="card-body">-->
+<!--          <div class="d-flex justify-content-between">-->
+<!--            <span class="product-name">Tablet</span>-->
+<!--            <span class="product-price">$300</span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; Product Card 6 &ndash;&gt;-->
+<!--      <div class="card">-->
+<!--        <img src="https://via.placeholder.com/250x200" class="card-img-top" alt="Product 6">-->
+<!--        <div class="card-body">-->
+<!--          <div class="d-flex justify-content-between">-->
+<!--            <span class="product-name">Gaming Console</span>-->
+<!--            <span class="product-price">$400</span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; Product Card 7 &ndash;&gt;-->
+<!--      <div class="card">-->
+<!--        <img src="https://via.placeholder.com/250x200" class="card-img-top" alt="Product 7">-->
+<!--        <div class="card-body">-->
+<!--          <div class="d-flex justify-content-between">-->
+<!--            <span class="product-name">Camera</span>-->
+<!--            <span class="product-price">$600</span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; Product Card 8 &ndash;&gt;-->
+<!--      <div class="card">-->
+<!--        <img src="https://via.placeholder.com/250x200" class="card-img-top" alt="Product 8">-->
+<!--        <div class="card-body">-->
+<!--          <div class="d-flex justify-content-between">-->
+<!--            <span class="product-name">TV</span>-->
+<!--            <span class="product-price">$1000</span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+  </div>
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

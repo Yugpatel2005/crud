@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Razorpay Payment</title>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+  <h2>Complete Payment</h2>
+
+
+
+
+  <script>
+      var options = {
+          "key": "{{ key }}",
+          "amount": "{{ amount }}",
+          "currency": "{{ currency }}",
+          "order_id": "{{ razorpay_order_id }}",
+          "handler": function (response){
+              alert("Order Placed Successfully");
+              window.location.href = "/";
+          }
+      };
+      var rzp = new Razorpay(options);
+      rzp.open();
+  </script>
+</body>
+</html>
